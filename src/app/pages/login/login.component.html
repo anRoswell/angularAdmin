@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-8 col-md-6 col-lg-4">
+      <form class="frm-login" [formGroup]="form" novalidate>
+        <div class="card">
+          <h5 class="card-header">Ingreso</h5>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="username">Usuario:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="Usuario"
+                maxlength="100"
+                formControlName="username"
+              />
+              <ng-container *ngIf="isValid('username')">
+                <small class="text-danger">
+                  El usuario es requerido.
+                </small>
+              </ng-container>
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Contraseña"
+                maxlength="10"
+                formControlName="access"
+              />
+              <ng-container *ngIf="isValid('access')">
+                <small class="text-danger">
+                  La contraseña es requerida.
+                </small>
+              </ng-container>
+            </div>
+            <button
+              type="button"
+              class="btn btn-info"
+              [disabled]="form.invalid"
+              (click)="login()"
+            >
+              Ingresar
+            </button>
+          </div>
+        </div>
+      </form>
+      <ng-container *ngIf="hasError">
+        <div class="alert alert-danger mt-4" role="alert">
+          {{ errorMessage }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
